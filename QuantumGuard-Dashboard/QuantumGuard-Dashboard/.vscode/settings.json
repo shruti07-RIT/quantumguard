@@ -1,0 +1,8 @@
+{
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.open": true,
+  "liveServer.settings.file": "index.html",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}

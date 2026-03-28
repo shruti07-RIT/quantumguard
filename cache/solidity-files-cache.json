@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\shrut\\Downloads\\quantumguard-backend (1)\\quantumguard-backend\\contracts\\FarmerIdentity.sol": {
+      "lastModificationDate": 1774646026969,
+      "contentHash": "459f111ea1705d8bf409d8914ed94807",
+      "sourceName": "contracts/FarmerIdentity.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "FarmerIdentity"
+      ]
+    }
+  }
+}

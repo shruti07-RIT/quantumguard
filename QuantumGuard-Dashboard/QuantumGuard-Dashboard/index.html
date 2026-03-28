@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuantumGuard – Farmer Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     SCREEN 1: LANDING PAGE
+═══════════════════════════════════ -->
+<div id="screen-landing" class="screen active">
+  <div class="landing">
+    <nav class="land-nav">
+      <div class="land-logo">
+        <div class="land-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="land-logo-name">QuantumGuard</span>
+      </div>
+      <div class="land-nav-links">
+        <a onclick="landScrollTo('land-about')">About</a>
+        <a onclick="landScrollTo('land-features')">Features</a>
+        <a onclick="landScrollTo('land-schemes')">Schemes</a>
+        <a onclick="landScrollTo('land-contact')">Contact</a>
+      </div>
+      <div class="land-nav-btns">
+        <button class="btn btn-outline" onclick="showScreen('screen-login')">Login</button>
+        <button class="btn btn-primary" onclick="showScreen('screen-register')">Register</button>
+      </div>
+    </nav>
+
+    <div class="land-hero">
+      <div class="land-hero-text">
+        <div class="land-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Blockchain-Powered Identity System
+        </div>
+        <h1 class="land-h1">Empower Your Farm with <span>Digital Identity</span></h1>
+        <p class="land-tagline">QuantumGuard gives every farmer a tamper-proof digital identity stored on the Ethereum blockchain — unlock government schemes, verify land records, and apply for loans instantly.</p>
+        <div class="land-hero-btns">
+          <button class="btn btn-primary" onclick="showScreen('screen-register')" style="padding:14px 32px;font-size:15px">🌾 Get Started Free</button>
+          <button class="btn btn-outline" onclick="showScreen('screen-login')" style="padding:14px 28px;font-size:15px">Login to Dashboard</button>
+        </div>
+        <div class="land-features">
+          <div class="land-feat"><div class="land-feat-dot"></div> Aadhaar Encrypted</div>
+          <div class="land-feat"><div class="land-feat-dot"></div> IPFS Document Storage</div>
+          <div class="land-feat"><div class="land-feat-dot"></div> Instant Loan Eligibility</div>
+          <div class="land-feat"><div class="land-feat-dot"></div> QR Identity Card</div>
+        </div>
+      </div>
+
+      <div class="land-float" style="position:relative">
+        <!-- Main farm SVG illustration -->
+        <svg class="land-illustration" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky -->
+          <rect width="400" height="200" fill="url(#skyGrad)" rx="20"/>
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b2dfdb"/>
+              <stop offset="100%" stop-color="#e8f5e9"/>
+            </linearGradient>
+            <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4CAF50"/>
+              <stop offset="100%" stop-color="#2e7d32"/>
+            </linearGradient>
+          </defs>
+          <!-- Sun -->
+          <circle cx="330" cy="55" r="30" fill="#FFD54F" opacity=".7"/>
+          <circle cx="330" cy="55" r="22" fill="#FFA726" opacity=".6"/>
+          <!-- Clouds -->
+          <ellipse cx="80" cy="60" rx="35" ry="18" fill="white" opacity=".7"/>
+          <ellipse cx="105" cy="52" rx="28" ry="16" fill="white" opacity=".7"/>
+          <ellipse cx="200" cy="45" rx="42" ry="20" fill="white" opacity=".6"/>
+          <ellipse cx="230" cy="38" rx="30" ry="16" fill="white" opacity=".6"/>
+          <!-- Ground -->
+          <rect y="185" width="400" height="135" fill="url(#groundGrad)" rx="0"/>
+          <ellipse cx="200" cy="185" rx="200" ry="12" fill="#388e3c"/>
+          <!-- Farmhouse -->
+          <rect x="140" y="120" width="80" height="70" fill="#fff8e1" rx="4"/>
+          <polygon points="130,120 220,120 175,80" fill="#e65100"/>
+          <rect x="162" y="145" width="26" height="45" fill="#6d4c41" rx="3"/><!-- door -->
+          <rect x="148" y="128" width="20" height="18" fill="#b2dfdb" rx="2"/><!-- window -->
+          <rect x="192" y="128" width="20" height="18" fill="#b2dfdb" rx="2"/>
+          <!-- Crops left -->
+          <g opacity=".9">
+            <rect x="20" y="175" width="6" height="40" fill="#33691e"/>
+            <ellipse cx="23" cy="168" rx="10" ry="14" fill="#4CAF50"/>
+            <rect x="40" y="178" width="6" height="37" fill="#33691e"/>
+            <ellipse cx="43" cy="172" rx="10" ry="12" fill="#66bb6a"/>
+            <rect x="60" y="175" width="6" height="40" fill="#33691e"/>
+            <ellipse cx="63" cy="168" rx="10" ry="14" fill="#4CAF50"/>
+            <rect x="80" y="178" width="6" height="37" fill="#33691e"/>
+            <ellipse cx="83" cy="172" rx="10" ry="12" fill="#81c784"/>
+          </g>
+          <!-- Crops right -->
+          <g opacity=".9">
+            <rect x="280" y="175" width="6" height="40" fill="#33691e"/>
+            <ellipse cx="283" cy="168" rx="10" ry="14" fill="#4CAF50"/>
+            <rect x="300" y="178" width="6" height="37" fill="#33691e"/>
+            <ellipse cx="303" cy="172" rx="10" ry="12" fill="#66bb6a"/>
+            <rect x="320" y="175" width="6" height="40" fill="#33691e"/>
+            <ellipse cx="323" cy="168" rx="10" ry="14" fill="#4CAF50"/>
+            <rect x="340" y="178" width="6" height="37" fill="#33691e"/>
+            <ellipse cx="343" cy="172" rx="10" ry="12" fill="#81c784"/>
+          </g>
+          <!-- Farmer silhouette -->
+          <circle cx="250" cy="155" r="12" fill="#5d4037"/>
+          <rect x="242" y="167" width="16" height="28" fill="#1b5e20" rx="4"/>
+          <rect x="236" y="172" width="10" height="18" fill="#1b5e20" rx="3"/>
+          <rect x="252" y="172" width="10" height="18" fill="#1b5e20" rx="3"/>
+          <rect x="242" y="195" width="7" height="16" fill="#5d4037" rx="3"/>
+          <rect x="251" y="195" width="7" height="16" fill="#5d4037" rx="3"/>
+          <!-- Blockchain hexagon decoration -->
+          <polygon points="355,100 368,107 368,121 355,128 342,121 342,107" fill="none" stroke="#4CAF50" stroke-width="1.5" opacity=".5"/>
+          <polygon points="375,130 384,135 384,145 375,150 366,145 366,135" fill="none" stroke="#FFA726" stroke-width="1.5" opacity=".5"/>
+          <!-- Path -->
+          <ellipse cx="200" cy="300" rx="60" ry="8" fill="#2e7d32" opacity=".5"/>
+          <rect x="188" y="185" width="24" height="120" fill="#d7ccc8" opacity=".4"/>
+        </svg>
+
+        <!-- Floating info cards -->
+        <div class="float-card fc1" style="top:8%;right:-30px">
+          <div class="fc-label">✅ Identity Verified</div>
+          <div class="fc-val" style="color:#2e7d32;font-size:12px;font-weight:700">Blockchain Secured</div>
+        </div>
+        <div class="float-card fc2" style="bottom:22%;left:-30px">
+          <div class="fc-label">💰 Loan Eligible</div>
+          <div class="fc-val">₹1,50,000</div>
+        </div>
+        <div class="float-card fc3" style="top:52%;right:-40px">
+          <div class="fc-label">📄 Docs on IPFS</div>
+          <div class="fc-val" style="font-size:10px;font-family:monospace;color:#1565c0">Qm4x...f9aB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="land-stats">
+      <div class="land-stat">
+        <div class="land-stat-val">12,480+</div>
+        <div class="land-stat-lbl">Farmers Registered</div>
+      </div>
+      <div class="land-stat">
+        <div class="land-stat-val">8,912</div>
+        <div class="land-stat-lbl">Identities Verified</div>
+      </div>
+      <div class="land-stat">
+        <div class="land-stat-val">₹24 Cr+</div>
+        <div class="land-stat-lbl">Loans Facilitated</div>
+      </div>
+      <div class="land-stat">
+        <div class="land-stat-val">318</div>
+        <div class="land-stat-lbl">Land Records on Chain</div>
+      </div>
+      <div class="land-stat">
+        <div class="land-stat-val">99.8%</div>
+        <div class="land-stat-lbl">System Uptime</div>
+      </div>
+    </div>
+
+    <!-- ── ABOUT SECTION ── -->
+    <section id="land-about" style="padding:60px 48px;background:white;border-top:1px solid var(--border)">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:40px">
+          <div class="land-badge" style="margin:0 auto 14px">🌾 About QuantumGuard</div>
+          <h2 style="font-family:var(--font-head);font-size:32px;font-weight:700;color:#1b5e20;margin-bottom:12px">Built for India's Farmers</h2>
+          <p style="font-size:14px;color:var(--text2);max-width:580px;margin:0 auto;line-height:1.8">QuantumGuard is a blockchain-powered digital identity platform designed to solve the identity and credit-access problem faced by 140+ million Indian farmers. We combine Ethereum smart contracts, IPFS document storage, and government scheme integration into one simple portal.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <div style="text-align:center;padding:28px 20px;background:var(--green-xpale);border-radius:16px;border:1px solid #c8e6c9">
+            <div style="font-size:36px;margin-bottom:10px">🔐</div>
+            <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px">Tamper-Proof Identity</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7">Every farmer's identity is hashed with SHA-256 and stored permanently on the Ethereum blockchain — no middlemen, no fraud.</div>
+          </div>
+          <div style="text-align:center;padding:28px 20px;background:#fff3e0;border-radius:16px;border:1px solid #ffe0b2">
+            <div style="font-size:36px;margin-bottom:10px">📄</div>
+            <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#e65100;margin-bottom:8px">Decentralised Documents</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7">Land records, Aadhaar scans, and bank passbooks are pinned to IPFS via Pinata — permanently accessible with a unique CID.</div>
+          </div>
+          <div style="text-align:center;padding:28px 20px;background:#e3f2fd;border-radius:16px;border:1px solid #bbdefb">
+            <div style="font-size:36px;margin-bottom:10px">🏦</div>
+            <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#1565c0;margin-bottom:8px">Instant Loan Access</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7">Verified farmers get pre-assessed loan eligibility — banks and NBFCs can trust your digital identity without lengthy paperwork.</div>
+          </div>
+        </div>
+        <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">
+          <div style="background:linear-gradient(135deg,#1b5e20,#4CAF50);border-radius:16px;padding:28px;color:white">
+            <div style="font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:10px">Our Mission</div>
+            <p style="font-size:13px;opacity:.9;line-height:1.8">To give every Indian farmer a verifiable, digital economic identity — enabling fair credit access, government benefit delivery, and land record transparency through open blockchain technology.</p>
+            <div style="margin-top:16px;display:flex;gap:20px">
+              <div><div style="font-size:22px;font-weight:800">2023</div><div style="font-size:11px;opacity:.7">Founded</div></div>
+              <div><div style="font-size:22px;font-weight:800">12K+</div><div style="font-size:11px;opacity:.7">Farmers</div></div>
+              <div><div style="font-size:22px;font-weight:800">8 States</div><div style="font-size:11px;opacity:.7">Active</div></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--green-xpale);border-radius:12px;border:1px solid #c8e6c9">
+              <span style="font-size:20px">🇮🇳</span>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Made for India</div><div style="font-size:11px;color:var(--text2)">Supports Marathi, Hindi & 6 regional languages. Works on 2G networks.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff3e0;border-radius:12px;border:1px solid #ffe0b2">
+              <span style="font-size:20px">🤝</span>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Government Partnerships</div><div style="font-size:11px;color:var(--text2)">Integrated with PM-KISAN, PMFBY, KCC and state schemes across Maharashtra, Karnataka & Punjab.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:#e3f2fd;border-radius:12px;border:1px solid #bbdefb">
+              <span style="font-size:20px">🔓</span>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Open & Auditable</div><div style="font-size:11px;color:var(--text2)">All smart contracts are verified on Etherscan. No black boxes — complete transparency.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURES SECTION ── -->
+    <section id="land-features" style="padding:60px 48px;background:var(--bg);border-top:1px solid var(--border)">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:40px">
+          <div class="land-badge" style="margin:0 auto 14px">⚡ Platform Features</div>
+          <h2 style="font-family:var(--font-head);font-size:32px;font-weight:700;color:#1b5e20;margin-bottom:12px">Everything a Farmer Needs</h2>
+          <p style="font-size:14px;color:var(--text2);max-width:520px;margin:0 auto">From digital identity to loan approval — one platform built on trust and transparency.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+          <div style="background:var(--green-pale);border:1px solid #c8e6c9;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">🆔</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--green);margin-bottom:6px">Blockchain Identity (SHA-256)</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">Your identity hash is permanently stored on Ethereum. No one can alter, duplicate, or falsify your farmer ID.</div>
+          </div>
+          <div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">🔒</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:#e65100;margin-bottom:6px">AES-256 Aadhaar Encryption</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">Raw Aadhaar numbers are never stored. We encrypt your sensitive data before saving it anywhere — local or cloud.</div>
+          </div>
+          <div style="background:#e3f2fd;border:1px solid #bbdefb;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">📄</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:#1565c0;margin-bottom:6px">IPFS Document Storage</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">All your documents — Aadhaar, land records, bank passbook — are pinned to IPFS via Pinata for tamper-proof storage.</div>
+          </div>
+          <div style="background:#f3e5f5;border:1px solid #e1bee7;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">🏛️</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:#7b1fa2;margin-bottom:6px">Auto Scheme Matching</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">Based on your land, crop, income and location, we auto-match you to PM-KISAN, PMFBY, KCC and 9 other schemes.</div>
+          </div>
+          <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">💰</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--green);margin-bottom:6px">Instant Loan Eligibility</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">Your profile is scored against 6 criteria. Get real-time loan pre-approval for Kisan Credit Card or PM Kisan Yojana.</div>
+          </div>
+          <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:14px;padding:20px;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.08)'" onmouseleave="this.style.boxShadow='none'">
+            <div style="font-size:28px;margin-bottom:10px">📱</div>
+            <div style="font-family:var(--font-head);font-size:14px;font-weight:700;color:#f57f17;margin-bottom:6px">QR Identity Card</div>
+            <div style="font-size:12.5px;color:var(--text2);line-height:1.6">Your verified QR code links to your blockchain identity, documents and profile. Share with any bank or government office.</div>
+          </div>
+        </div> </div>
+      </div>
+    </section>
+
+    <!-- ── SCHEMES SECTION ── -->
+    <section id="land-schemes" style="padding:60px 48px;background:white;border-top:1px solid var(--border)">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:40px">
+          <div class="land-badge" style="margin:0 auto 14px">🏛️ Government Schemes</div>
+          <h2 style="font-family:var(--font-head);font-size:32px;font-weight:700;color:#1b5e20;margin-bottom:12px">Schemes We Help You Access</h2>
+          <p style="font-size:14px;color:var(--text2);max-width:540px;margin:0 auto">Once registered and verified, QuantumGuard auto-matches you to these schemes and guides you through applying — with your documents already attached.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#2e7d32,#4CAF50)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">PM-KISAN Samman Nidhi</div>
+              <div style="font-size:20px;font-weight:800;color:#2e7d32;font-family:var(--font-head);margin-bottom:6px">₹6,000 / year</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">Direct income support in 3 equal instalments for all land-holding farmer families.</div>
+              <div style="font-size:10.5px;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">✅ All registered farmers</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering to apply for PM-KISAN'),800)" style="width:100%;padding:8px;border:1.5px solid #2e7d32;background:transparent;color:#2e7d32;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#e8f5e9'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#2e7d32,#4CAF50)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">Pradhan Mantri Fasal Bima</div>
+              <div style="font-size:20px;font-weight:800;color:#2e7d32;font-family:var(--font-head);margin-bottom:6px">Up to ₹2 Lakh</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">Comprehensive crop insurance against natural calamities, pests & diseases at subsidized premium.</div>
+              <div style="font-size:10.5px;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">✅ Landholding + Crop photo required</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering to apply for PMFBY'),800)" style="width:100%;padding:8px;border:1.5px solid #2e7d32;background:transparent;color:#2e7d32;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#e8f5e9'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#e65100,#FFA726)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">Kisan Credit Card (KCC)</div>
+              <div style="font-size:20px;font-weight:800;color:#e65100;font-family:var(--font-head);margin-bottom:6px">₹1,60,000 credit</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">Short-term crop production credit at 4% interest. Post-harvest & allied activity expenses covered.</div>
+              <div style="font-size:10.5px;background:#fff3e0;color:#e65100;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">⚠️ Bank verification needed</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering for KCC'),800)" style="width:100%;padding:8px;border:1.5px solid #e65100;background:transparent;color:#e65100;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#fff3e0'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#2e7d32,#4CAF50)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">Soil Health Card Scheme</div>
+              <div style="font-size:20px;font-weight:800;color:#2e7d32;font-family:var(--font-head);margin-bottom:6px">Free</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">Soil testing + crop-wise fertilizer & nutrient recommendations. Reduces input costs by up to 30%.</div>
+              <div style="font-size:10.5px;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">✅ All farmers eligible</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering for Soil Health Card'),800)" style="width:100%;padding:8px;border:1.5px solid #2e7d32;background:transparent;color:#2e7d32;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#e8f5e9'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#2e7d32,#4CAF50)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">NABARD Short-term Loan</div>
+              <div style="font-size:20px;font-weight:800;color:#2e7d32;font-family:var(--font-head);margin-bottom:6px">₹1,50,000</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">Agricultural loans channelled through cooperative banks, RRBs, and commercial banks at concessional rates.</div>
+              <div style="font-size:10.5px;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">✅ Verified identity required</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering for NABARD Loan'),800)" style="width:100%;padding:8px;border:1.5px solid #2e7d32;background:transparent;color:#2e7d32;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#e8f5e9'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #e0e0e0;border-radius:14px;overflow:hidden;background:white;transition:.2s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,.09)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+            <div style="height:4px;background:linear-gradient(90deg,#1565c0,#42a5f5)"></div>
+            <div style="padding:18px">
+              <div style="font-family:var(--font-head);font-size:13.5px;font-weight:700;color:var(--text1);margin-bottom:6px">Maharashtra Shetkari Yojana</div>
+              <div style="font-size:20px;font-weight:800;color:#1565c0;font-family:var(--font-head);margin-bottom:6px">₹50,000 max</div>
+              <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:10px">State drought relief, input subsidy on seeds & fertilizers, interest-free loans for drought-affected districts.</div>
+              <div style="font-size:10.5px;background:#e3f2fd;color:#1565c0;padding:4px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">ℹ️ Maharashtra farmers only</div>
+              <div style="border-top:1px solid #f5f5f5;padding-top:10px">
+                <button onclick="showScreen('screen-register');setTimeout(()=>showToast('📋 Registering for Shetkari Yojana'),800)" style="width:100%;padding:8px;border:1.5px solid #1565c0;background:transparent;color:#1565c0;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:.15s" onmouseenter="this.style.background='#e3f2fd'" onmouseleave="this.style.background='transparent'">Register to Apply →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT SECTION ── -->
+    <section id="land-contact" style="padding:60px 48px;background:var(--bg);border-top:1px solid var(--border)">
+      <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+        <div>
+          <div class="land-badge" style="margin-bottom:14px">📬 Contact Us</div>
+          <h2 style="font-family:var(--font-head);font-size:28px;font-weight:700;color:#1b5e20;margin-bottom:12px">We're Here to Help</h2>
+          <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:24px">Having trouble registering? Need help with a scheme application or loan query? Reach out to our farmer support team — available in Marathi, Hindi & English.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid var(--border)">
+              <div style="width:40px;height:40px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📞</div>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Toll-Free Helpline</div><div style="font-size:12px;color:var(--green);font-weight:600">1800-XXX-XXXX</div><div style="font-size:10.5px;color:var(--text2)">Mon–Sat · 9 AM – 6 PM</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid var(--border)">
+              <div style="width:40px;height:40px;background:#fff3e0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✉️</div>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Email Support</div><div style="font-size:12px;color:#e65100;font-weight:600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="31424441415e4345714044505f45445c56445043551f585f">[email&#160;protected]</a></div><div style="font-size:10.5px;color:var(--text2)">Response within 24 hours</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid var(--border)">
+              <div style="width:40px;height:40px;background:#e3f2fd;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📍</div>
+              <div><div style="font-size:13px;font-weight:700;color:var(--text1)">Office</div><div style="font-size:12px;color:#1565c0;font-weight:600">Pune, Maharashtra</div><div style="font-size:10.5px;color:var(--text2)">Baner Tech Park, 411045</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:16px;padding:28px;border:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.05)">
+          <div style="font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--text1);margin-bottom:18px">Send Us a Message</div>
+          <div class="form-field">
+            <label class="form-label">Your Name *</label>
+            <input class="form-input" id="contact-name" type="text" placeholder="e.g. Ramesh Bhosale">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Phone Number *</label>
+            <input class="form-input" id="contact-phone" type="tel" placeholder="10-digit mobile" maxlength="10">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Subject</label>
+            <select class="form-input" id="contact-subject">
+              <option>Registration Help</option>
+              <option>Loan Eligibility Query</option>
+              <option>Document Upload Issue</option>
+              <option>Government Scheme Query</option>
+              <option>Technical Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message *</label>
+            <textarea class="form-input" id="contact-msg" rows="3" placeholder="Describe your query or issue..." style="height:auto;padding:10px;resize:none"></textarea>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="submitContact()" style="background:linear-gradient(135deg,#4CAF50,#2e7d32);margin-top:4px">📨 Send Message</button>
+        </div>
+      </div>
+      <!-- Footer strip -->
+      <div style="margin-top:48px;border-top:1px solid var(--border);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="land-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span style="font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--green)">QuantumGuard</span>
+        </div>
+        <div style="font-size:11.5px;color:var(--text2)">© 2026 QuantumGuard · Built for Indian Farmers · Powered by Ethereum & IPFS</div>
+        <div style="display:flex;gap:16px">
+          <a onclick="showToast('📄 Privacy Policy — coming soon')" style="font-size:12px;color:var(--text2);cursor:pointer">Privacy Policy</a>
+          <a onclick="showToast('📄 Terms of Service — coming soon')" style="font-size:12px;color:var(--text2);cursor:pointer">Terms</a>
+          <a onclick="window.open('https://sepolia.etherscan.io','_blank')" style="font-size:12px;color:var(--green);cursor:pointer;font-weight:600">Etherscan ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCREEN 2: LOGIN
+═══════════════════════════════════ -->
+<div id="screen-login" class="screen">
+  <div class="auth-wrap">
+    <div class="auth-left">
+      <div class="auth-left-logo">
+        <div class="auth-left-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="auth-left-logo-name">QuantumGuard</span>
+      </div>
+      <h2>Welcome Back,<br>Farmer! 🌾</h2>
+      <p>Log in to access your digital identity, loan eligibility, and government schemes.</p>
+      <!-- Farm art -->
+      <svg class="auth-art" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="100" width="220" height="60" fill="rgba(255,255,255,.1)" rx="0"/>
+        <ellipse cx="110" cy="100" rx="110" ry="8" fill="rgba(255,255,255,.12)"/>
+        <rect x="80" y="55" width="50" height="50" fill="rgba(255,255,255,.15)" rx="3"/>
+        <polygon points="72,55 138,55 105,25" fill="rgba(255,167,38,.5)"/>
+        <rect x="97" y="75" width="16" height="30" fill="rgba(255,255,255,.2)" rx="2"/>
+        <g opacity=".7">
+          <rect x="10" y="90" width="4" height="30" fill="rgba(255,255,255,.3)"/>
+          <ellipse cx="12" cy="86" rx="8" ry="10" fill="rgba(255,255,255,.2)"/>
+          <rect x="22" y="92" width="4" height="28" fill="rgba(255,255,255,.3)"/>
+          <ellipse cx="24" cy="88" rx="7" ry="9" fill="rgba(255,255,255,.25)"/>
+          <rect x="185" y="90" width="4" height="30" fill="rgba(255,255,255,.3)"/>
+          <ellipse cx="187" cy="86" rx="8" ry="10" fill="rgba(255,255,255,.2)"/>
+          <rect x="198" y="92" width="4" height="28" fill="rgba(255,255,255,.3)"/>
+          <ellipse cx="200" cy="88" rx="7" ry="9" fill="rgba(255,255,255,.25)"/>
+        </g>
+        <circle cx="155" cy="72" r="9" fill="rgba(255,255,255,.15)"/>
+        <rect x="152" y="72" width="6" height="28" fill="rgba(255,255,255,.15)" rx="3"/>
+        <rect x="145" y="80" width="6" height="14" fill="rgba(255,255,255,.1)" rx="2"/>
+      </svg>
+      <div class="auth-left-features">
+        <div class="auth-feat-row">
+          <div class="auth-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          Blockchain identity protection
+        </div>
+        <div class="auth-feat-row">
+          <div class="auth-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          AES-encrypted Aadhaar data
+        </div>
+        <div class="auth-feat-row">
+          <div class="auth-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="14" height="14"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          Government scheme access
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="auth-box">
+        <div class="auth-title">Farmer Login</div>
+        <div class="auth-sub">Enter your registered phone number and 4-digit PIN</div>
+        <div class="form-field">
+          <label class="form-label">📱 Phone Number</label>
+          <input class="form-input" id="login-phone" type="tel" placeholder="Enter 10-digit mobile number" maxlength="10">
+        </div>
+        <div class="form-field">
+          <label class="form-label">🔐 4-Digit PIN</label>
+          <div class="pin-row">
+            <input class="pin-input" id="pin1" type="password" maxlength="1" oninput="nextPin(this,1)">
+            <input class="pin-input" id="pin2" type="password" maxlength="1" oninput="nextPin(this,2)">
+            <input class="pin-input" id="pin3" type="password" maxlength="1" oninput="nextPin(this,3)">
+            <input class="pin-input" id="pin4" type="password" maxlength="1" oninput="nextPin(this,4)">
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="doLogin()" style="background:linear-gradient(135deg,#4CAF50,#2e7d32)">🌾 Login to Dashboard</button>
+        <div style="text-align:center;margin:16px 0;font-size:11px;color:var(--text2)">— or —</div>
+        <button class="btn btn-outline btn-full" onclick="doLogin()">Login with Aadhaar OTP</button>
+        <div class="auth-switch">New farmer? <a onclick="showScreen('screen-register')">Register here →</a></div>
+        <div class="auth-switch" style="margin-top:8px"><a onclick="showScreen('screen-landing')" style="color:var(--text2)">← Back to Home</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCREEN 3: MULTI-STEP REGISTRATION
+═══════════════════════════════════ -->
+<div id="screen-register" class="screen">
+  <div class="auth-wrap">
+    <div class="auth-left">
+      <div class="auth-left-logo">
+        <div class="auth-left-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="auth-left-logo-name">QuantumGuard</span>
+      </div>
+      <h2>Join QuantumGuard<br>as a Farmer 🌱</h2>
+      <p>Complete your 4-step registration to get your blockchain identity and access government schemes.</p>
+      <div style="margin-top:28px;width:100%;max-width:280px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="auth-feat-row" id="reg-step-indicator-1" style="opacity:1">
+            <div class="auth-feat-icon" style="background:rgba(255,255,255,.3)">1</div>
+            Personal Details
+          </div>
+          <div class="auth-feat-row" id="reg-step-indicator-2" style="opacity:.4">
+            <div class="auth-feat-icon">2</div>
+            Address Information
+          </div>
+          <div class="auth-feat-row" id="reg-step-indicator-3" style="opacity:.4">
+            <div class="auth-feat-icon">3</div>
+            Land Details
+          </div>
+          <div class="auth-feat-row" id="reg-step-indicator-4" style="opacity:.4">
+            <div class="auth-feat-icon">4</div>
+            Financial Details
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-right" style="background:#fafafa">
+      <div class="auth-box" style="max-width:480px">
+        <!-- Step progress bar -->
+        <div class="step-progress" style="margin-bottom:20px">
+          <div class="step-item">
+            <div class="step-circle active" id="sc1">1</div>
+            <div class="step-line" id="sl1"></div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle" id="sc2">2</div>
+            <div class="step-line" id="sl2"></div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle" id="sc3">3</div>
+            <div class="step-line" id="sl3"></div>
+          </div>
+          <div class="step-item" style="flex:initial">
+            <div class="step-circle" id="sc4">4</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Personal -->
+        <div id="reg-step-1" class="reg-step active">
+          <div class="auth-title">Personal Details</div>
+          <div class="auth-sub">Step 1 of 4 — Basic identity information</div>
+          <div class="reg-form-grid" style="margin-top:16px">
+            <div class="form-field">
+              <label class="form-label">Full Name *</label>
+              <input class="form-input" id="reg-name" type="text" placeholder="e.g. Ramesh Bhosale" oninput="collectRegStep(1);updateValidationStatusPage()">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Date of Birth *</label>
+              <input class="form-input" id="reg-dob" type="date">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Phone Number *</label>
+              <input class="form-input" id="reg-phone" type="tel" oninput="collectRegStep(1);updateValidationStatusPage()" placeholder="10-digit mobile" maxlength="10">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Aadhaar Number *</label>
+              <input class="form-input" id="reg-aadhaar" type="text" oninput="collectRegStep(1);updateValidationStatusPage()" placeholder="XXXX XXXX XXXX" maxlength="14">
+            </div>
+          </div>
+          <div class="form-field" style="margin-top:4px">
+            <label class="form-label">Set 4-Digit PIN *</label>
+            <div class="pin-row">
+              <input class="pin-input" type="password" maxlength="1">
+              <input class="pin-input" type="password" maxlength="1">
+              <input class="pin-input" type="password" maxlength="1">
+              <input class="pin-input" type="password" maxlength="1">
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text2);background:#fff3e0;padding:8px 10px;border-radius:7px;border:1px solid #ffe0b2;margin-top:8px">
+            🔐 Your Aadhaar will be AES-256 encrypted before storage. We never store raw Aadhaar data.
+          </div>
+        </div>
+
+        <!-- Step 2: Address -->
+        <div id="reg-step-2" class="reg-step">
+          <div class="auth-title">Address Details</div>
+          <div class="auth-sub">Step 2 of 4 — Where is your farm located?</div>
+          <div style="margin-top:16px">
+            <div class="form-field">
+              <label class="form-label">Full Address *</label>
+              <textarea class="form-input" id="reg-address" rows="2" placeholder="House No, Street, Landmark..." style="height:auto;padding:10px;resize:none"></textarea>
+            </div>
+            <div class="reg-form-grid">
+              <div class="form-field">
+                <label class="form-label">Village / Town *</label>
+                <input class="form-input" id="reg-village" type="text" oninput="collectRegStep(2);updateValidationStatusPage()" placeholder="e.g. Koregaon">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Taluka</label>
+                <input class="form-input" id="reg-taluka" type="text" placeholder="e.g. Satara">
+              </div>
+              <div class="form-field">
+                <label class="form-label">District *</label>
+                <input class="form-input" id="reg-district" type="text" oninput="collectRegStep(2);updateValidationStatusPage()" placeholder="e.g. Satara">
+              </div>
+              <div class="form-field">
+                <label class="form-label">State *</label>
+                <select class="form-input" id="reg-state">
+                  <option><span id="dp-state">Maharashtra</span></option>
+                  <option>Karnataka</option>
+                  <option>Andhra Pradesh</option>
+                  <option>Telangana</option>
+                  <option>Punjab</option>
+                  <option>Haryana</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Madhya Pradesh</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">PIN Code *</label>
+                <input class="form-input" id="reg-pincode" type="text" placeholder="6-digit PIN code" maxlength="6">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Land -->
+        <div id="reg-step-3" class="reg-step">
+          <div class="auth-title">Land Details</div>
+          <div class="auth-sub">Step 3 of 4 — Tell us about your farmland</div>
+          <div class="reg-form-grid" style="margin-top:16px">
+            <div class="form-field">
+              <label class="form-label">Land Area (Acres) *</label>
+              <input class="form-input" id="reg-landarea" type="number" oninput="collectRegStep(3);updateValidationStatusPage()" placeholder="e.g. 3.5">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Survey / Gat Number</label>
+              <input class="form-input" id="reg-surveyno" type="text" placeholder="e.g. 45/A">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Crop Type *</label>
+              <select class="form-input" id="reg-croptype">
+                <option>Sugarcane</option>
+                <option>Rice / Paddy</option>
+                <option>Wheat</option>
+                <option>Soybean</option>
+                <option>Cotton</option>
+                <option>Onion</option>
+                <option>Tomato</option>
+                <option>Grapes</option>
+                <option>Turmeric</option>
+                <option>Mixed Crops</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Irrigation Type *</label>
+              <select class="form-input" id="reg-irrigationtype">
+                <option>Drip Irrigation</option>
+                <option>Canal / River</option>
+                <option>Borewell</option>
+                <option>Rain-fed</option>
+                <option>Tank / Pond</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Soil Type</label>
+              <select class="form-input" id="reg-soiltype">
+                <option>Black Cotton Soil</option>
+                <option>Red Laterite</option>
+                <option>Alluvial</option>
+                <option>Sandy Loam</option>
+                <option>Clay</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Ownership</label>
+              <select class="form-input" id="reg-ownership">
+                <option>Self-owned</option>
+                <option>Leased</option>
+                <option>Inherited</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Financial -->
+        <div id="reg-step-4" class="reg-step">
+          <div class="auth-title">Financial Details</div>
+          <div class="auth-sub">Step 4 of 4 — This helps assess your loan eligibility</div>
+          <div class="reg-form-grid" style="margin-top:16px">
+            <div class="form-field">
+              <label class="form-label">Monthly Income (₹) *</label>
+              <input class="form-input" id="reg-monthlyincome" type="number" oninput="collectRegStep(4);updateValidationStatusPage()" placeholder="e.g. 15000">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Annual Income (₹)</label>
+              <input class="form-input" id="reg-annualincome" type="number" placeholder="Auto-calculated">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Bank Account Number *</label>
+              <input class="form-input" id="reg-bankaccount" type="text" oninput="collectRegStep(4);updateValidationStatusPage()" placeholder="Will be masked in display">
+            </div>
+            <div class="form-field">
+              <label class="form-label">IFSC Code</label>
+              <input class="form-input" id="reg-ifsc" type="text" placeholder="e.g. SBIN0001234">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Previous Loan History (Optional)</label>
+            <select class="form-input" id="reg-loanhistory">
+              <option>No previous loans</option>
+              <option>Kisan Credit Card (Active)</option>
+              <option>PM Kisan loan (Repaid)</option>
+              <option>Co-operative bank loan (Active)</option>
+              <option>NABARD loan (Repaid)</option>
+            </select>
+          </div>
+          <div style="font-size:11px;color:var(--text2);background:#e8f5e9;padding:8px 10px;border-radius:7px;border:1px solid #c8e6c9;margin-top:4px">
+            ✅ All financial data is securely stored. Your Farmer ID will be generated using SHA-256 hashing.
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div style="display:flex;gap:8px;margin-top:20px">
+          <button id="reg-prev-btn" class="btn btn-outline" style="flex:1;padding:12px;font-size:13px;display:none" onclick="regStep(-1)">← Back</button>
+          <button id="reg-next-btn" class="btn btn-primary" style="flex:1;padding:12px;font-size:13px" onclick="regStep(1)">Next Step →</button>
+        </div>
+        <div class="auth-switch">Already registered? <a onclick="showScreen('screen-login')">Login here →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCREEN 4: FARMER DASHBOARD
+═══════════════════════════════════ -->
+<div id="screen-dashboard" class="screen">
+  <div class="dash-wrap">
+
+    <!-- Sidebar -->
+    <div class="f-sidebar">
+      <div class="f-logo">
+        <div class="f-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="f-logo-title">QuantumGuard</div>
+          <div class="f-logo-sub">Farmer Portal</div>
+        </div>
+      </div>
+
+      <nav class="f-nav">
+        <div class="f-nav-section">My Dashboard</div>
+        <div class="f-nav-item active" onclick="showDashPage('schemes',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Government Schemes
+          <span class="f-nav-badge">3</span>
+        </div>
+        <div class="f-nav-item" onclick="showDashPage('profile',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Farmer Profile
+        </div>
+        <div class="f-nav-item" onclick="showDashPage('documents',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Documents
+        </div>
+
+        <div class="f-nav-section">Blockchain</div>
+        <div class="f-nav-item" onclick="showDashPage('blockchain',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Blockchain Details
+        </div>
+
+        <div class="f-nav-section">Loans & Identity</div>
+        <div class="f-nav-item" onclick="showDashPage('loan',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Loan Eligibility
+        </div>
+        <div class="f-nav-item" onclick="showDashPage('qr',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3"/><path d="M17 20v1"/><path d="M20 17h1"/></svg>
+          QR Identity Card
+        </div>
+        <div class="f-nav-item" onclick="showDashPage('status',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Validation Status
+        </div>
+      </nav>
+
+      <div class="f-farmer-footer">
+        <div class="f-farmer-avatar" id="sidebar-avatar">?</div>
+        <div>
+          <div class="f-farmer-name" id="sidebar-farmer-name">—</div>
+          <div class="f-farmer-id" id="sidebar-farmer-id">Not registered</div>
+        </div>
+        <button class="f-logout-btn" onclick="doLogout()" title="Logout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="f-main">
+
+      <!-- ── PAGE: SCHEMES ── -->
+      <div id="dash-schemes" class="f-page active">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">🏛️ Government Schemes</div>
+            <div class="f-page-sub">12 major central & state schemes for farmers</div>
+          </div>
+          <div class="f-topbar-right">
+            <div style="display:flex;gap:6px;align-items:center">
+              <select id="scheme-filter" onchange="filterSchemes()" style="font-size:12px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:white;color:var(--text2);font-family:var(--font-body);cursor:pointer">
+                <option value="all">All Schemes</option>
+                <option value="eligible">Eligible Only</option>
+                <option value="central">Central Govt</option>
+                <option value="state">State Govt</option>
+                <option value="insurance">Insurance</option>
+                <option value="loan">Loan / Credit</option>
+              </select>
+              <button class="f-notif-btn bell-anim">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <div class="f-notif-dot"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="f-content">
+
+          <!-- Hero Banner -->
+          <div style="border-radius:14px;overflow:hidden;margin-bottom:18px;position:relative;height:160px;background:linear-gradient(120deg,#1b5e20 0%,#2e7d32 50%,#388e3c 100%)">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;padding:24px 28px;gap:20px">
+              <div style="flex:1">
+                <div style="color:rgba(255,255,255,.7);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">QuantumGuard · Farmer Benefits</div>
+                <div style="font-family:var(--font-head);font-size:20px;font-weight:700;color:white;line-height:1.25;margin-bottom:8px">Access All Government<br>Schemes in One Place</div>
+                <div style="font-size:12px;color:rgba(255,255,255,.7)">Your verified identity unlocks direct benefit transfer to your bank account</div>
+              </div>
+              <!-- SVG farmer illustration -->
+              <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:.92">
+                <!-- Sun -->
+                <circle cx="100" cy="20" r="12" fill="rgba(255,213,79,.6)"/>
+                <line x1="100" y1="4" x2="100" y2="0" stroke="rgba(255,213,79,.5)" stroke-width="2"/>
+                <line x1="100" y1="36" x2="100" y2="40" stroke="rgba(255,213,79,.5)" stroke-width="2"/>
+                <line x1="84" y1="20" x2="80" y2="20" stroke="rgba(255,213,79,.5)" stroke-width="2"/>
+                <line x1="116" y1="20" x2="120" y2="20" stroke="rgba(255,213,79,.5)" stroke-width="2"/>
+                <!-- Ground -->
+                <rect x="0" y="105" width="130" height="25" rx="0" fill="rgba(139,90,43,.35)"/>
+                <ellipse cx="65" cy="105" rx="65" ry="5" fill="rgba(76,175,80,.3)"/>
+                <!-- Crop rows -->
+                <g fill="rgba(129,199,132,.6)">
+                  <ellipse cx="20" cy="98" rx="8" ry="12"/>
+                  <ellipse cx="35" cy="95" rx="8" ry="14"/>
+                  <ellipse cx="50" cy="98" rx="8" ry="12"/>
+                  <rect x="18" y="98" width="4" height="10" fill="rgba(139,90,43,.4)" rx="1"/>
+                  <rect x="33" y="95" width="4" height="12" fill="rgba(139,90,43,.4)" rx="1"/>
+                  <rect x="48" y="98" width="4" height="10" fill="rgba(139,90,43,.4)" rx="1"/>
+                </g>
+                <!-- Farmer body -->
+                <circle cx="78" cy="48" r="12" fill="rgba(255,213,150,.9)"/><!-- head -->
+                <!-- Hat -->
+                <ellipse cx="78" cy="38" rx="16" ry="4" fill="rgba(255,167,38,.85)"/>
+                <rect x="70" y="32" width="16" height="8" rx="2" fill="rgba(255,167,38,.85)"/>
+                <!-- Body -->
+                <rect x="68" y="60" width="20" height="26" rx="4" fill="rgba(255,255,255,.7)"/>
+                <!-- Arms -->
+                <line x1="68" y1="65" x2="55" y2="78" stroke="rgba(255,213,150,.9)" stroke-width="5" stroke-linecap="round"/>
+                <line x1="88" y1="65" x2="100" y2="72" stroke="rgba(255,213,150,.9)" stroke-width="5" stroke-linecap="round"/>
+                <!-- Tool -->
+                <line x1="100" y1="72" x2="110" y2="100" stroke="rgba(139,90,43,.8)" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="110" cy="102" rx="6" ry="3" fill="rgba(139,90,43,.8)"/>
+                <!-- Legs -->
+                <rect x="68" y="84" width="8" height="22" rx="3" fill="rgba(63,81,181,.6)"/>
+                <rect x="80" y="84" width="8" height="22" rx="3" fill="rgba(63,81,181,.6)"/>
+                <!-- Basket -->
+                <rect x="40" y="72" width="20" height="16" rx="4" fill="rgba(255,167,38,.7)"/>
+                <path d="M40 72 Q50 64 60 72" stroke="rgba(255,167,38,.8)" stroke-width="2" fill="none"/>
+                <circle cx="46" cy="76" r="3" fill="rgba(239,68,68,.7)"/>
+                <circle cx="52" cy="74" r="3" fill="rgba(255,213,79,.8)"/>
+                <circle cx="57" cy="77" r="3" fill="rgba(239,68,68,.7)"/>
+              </svg>
+            </div>
+            <!-- pattern overlay -->
+            <div style="position:absolute;inset:0;background:url('data:image/svg+xml,%3Csvg width=40 height=40 viewBox=0 0 40 40 xmlns=http://www.w3.org/2000/svg%3E%3Cg fill=%23ffffff fill-opacity=0.03%3E%3Cpath d=M0 40L40 0H20L0 20M40 40V20L20 40/%3E%3C/g%3E%3C/svg%3E');pointer-events:none"></div>
+          </div>
+
+          <!-- Stats -->
+          <div class="f-stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:18px">
+            <div class="f-stat">
+              <div class="f-stat-info"><div class="label">Eligible Schemes</div><div class="value">8</div><div class="sub">Based on your profile</div></div>
+              <div class="f-stat-icon si-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            </div>
+            <div class="f-stat">
+              <div class="f-stat-info"><div class="label">Total Benefit</div><div class="value" style="font-size:17px">₹5.7L</div><div class="sub">Potential per year</div></div>
+              <div class="f-stat-icon si-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            </div>
+            <div class="f-stat">
+              <div class="f-stat-info"><div class="label">Active Applications</div><div class="value">1</div><div class="sub">PM-KISAN applied</div></div>
+              <div class="f-stat-icon si-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            </div>
+            <div class="f-stat">
+              <div class="f-stat-info"><div class="label">Total Schemes</div><div class="value">12</div><div class="sub">Central + State</div></div>
+              <div class="f-stat-icon si-yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            </div>
+          </div>
+
+          <!-- Farmer photo strip -->
+          <div style="display:flex;gap:10px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px">
+            <!-- SVG illustrated farmer scene cards -->
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#e8f5e9"/><rect y="60" width="160" height="28" fill="#a5d6a7" rx="0"/><ellipse cx="80" cy="60" rx="80" ry="6" fill="#81c784"/><rect x="60" y="30" width="40" height="34" fill="rgba(255,255,255,.6)" rx="3"/><polygon points="52,30 108,30 80,8" fill="#FFA726"/><rect x="72" y="48" width="16" height="16" fill="rgba(255,255,255,.8)" rx="2"/><g fill="#4CAF50" opacity=".7"><ellipse cx="20" cy="54" rx="7" ry="10"/><rect x="17" y="54" width="6" height="10" fill="#795548" rx="1"/><ellipse cx="35" cy="50" rx="7" ry="12"/><rect x="32" y="50" width="6" height="12" fill="#795548" rx="1"/><ellipse cx="130" cy="54" rx="7" ry="10"/><rect x="127" y="54" width="6" height="10" fill="#795548" rx="1"/><ellipse cx="145" cy="50" rx="7" ry="12"/><rect x="142" y="50" width="6" height="12" fill="#795548" rx="1"/></g><circle cx="130" cy="18" r="10" fill="rgba(255,213,79,.6)"/></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#1b5e20;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">PM-KISAN</div>
+            </div>
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#e3f2fd"/><rect y="55" width="160" height="33" fill="#90caf9" rx="0"/><g opacity=".8"><path d="M30 55 Q40 25 50 40 Q60 15 70 45 Q80 20 90 50 Q100 28 110 42 Q120 18 130 50" stroke="#1565c0" stroke-width="2" fill="none"/><path d="M20 55 Q35 35 50 55 Q65 30 80 55 Q95 35 110 55 Q125 30 140 55" fill="rgba(100,181,246,.35)" stroke="none"/></g><ellipse cx="80" cy="30" rx="25" ry="20" fill="rgba(100,181,246,.4)"/><text x="80" y="35" text-anchor="middle" font-size="18" fill="#1565c0">🌧️</text></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#1565c0;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">Crop Insurance</div>
+            </div>
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#fff3e0"/><rect x="30" y="20" width="100" height="55" rx="6" fill="rgba(255,167,38,.2)" stroke="#FFA726" stroke-width="1.5"/><rect x="40" y="30" width="80" height="8" rx="2" fill="#FFA726" opacity=".5"/><rect x="40" y="44" width="55" height="6" rx="2" fill="#795548" opacity=".3"/><rect x="40" y="54" width="40" height="6" rx="2" fill="#795548" opacity=".3"/><rect x="40" y="64" width="65" height="6" rx="2" fill="#795548" opacity=".3"/><circle cx="125" cy="35" r="12" fill="rgba(255,167,38,.3)"/><text x="125" y="40" text-anchor="middle" font-size="14" fill="#e65100">💳</text></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#e65100;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">Kisan Credit</div>
+            </div>
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#f3e5f5"/><rect y="62" width="160" height="26" fill="#ce93d8" rx="0"/><g opacity=".75"><ellipse cx="40" cy="55" rx="12" ry="18" fill="#7b1fa2"/><rect x="34" y="60" width="12" height="26" fill="#4a148c" rx="2"/><ellipse cx="70" cy="50" rx="12" ry="20" fill="#9c27b0"/><rect x="64" y="56" width="12" height="30" fill="#4a148c" rx="2"/><ellipse cx="100" cy="55" rx="12" ry="18" fill="#7b1fa2"/><rect x="94" y="60" width="12" height="26" fill="#4a148c" rx="2"/><ellipse cx="130" cy="52" rx="12" ry="20" fill="#9c27b0"/><rect x="124" y="58" width="12" height="28" fill="#4a148c" rx="2"/></g><text x="20" y="30" font-size="18">🌱</text></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#7b1fa2;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">Soil Health</div>
+            </div>
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#fce4ec"/><g opacity=".8"><rect x="20" y="30" width="50" height="35" rx="4" fill="rgba(233,30,99,.2)" stroke="#e91e63" stroke-width="1.5"/><rect x="90" y="25" width="50" height="40" rx="4" fill="rgba(233,30,99,.2)" stroke="#e91e63" stroke-width="1.5"/><rect x="55" y="35" width="35" height="5" rx="2" fill="#e91e63" opacity=".5"/><line x1="72" y1="40" x2="90" y2="45" stroke="#e91e63" stroke-width="2" stroke-dasharray="3,2"/><text x="37" y="52" text-anchor="middle" font-size="20">🏦</text><text x="115" y="50" text-anchor="middle" font-size="20">👨‍🌾</text></g><text x="80" y="85" text-anchor="middle" font-size="9" fill="#880e4f">Direct Bank Transfer</text></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#c2185b;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">DBT Schemes</div>
+            </div>
+            <div style="flex-shrink:0;width:160px;height:88px;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#e8eaf6,#c5cae9)">
+              <svg width="160" height="88" viewBox="0 0 160 88"><rect width="160" height="88" fill="#e8eaf6"/><rect y="55" width="160" height="33" fill="#9fa8da" rx="0"/><g opacity=".7"><rect x="15" y="38" width="130" height="22" rx="3" fill="rgba(63,81,181,.15)" stroke="#3f51b5" stroke-width="1"/><rect x="20" y="42" width="30" height="5" rx="2" fill="#3f51b5" opacity=".4"/><rect x="56" y="42" width="30" height="5" rx="2" fill="#3f51b5" opacity=".4"/><rect x="92" y="42" width="30" height="5" rx="2" fill="#3f51b5" opacity=".4"/><rect x="20" y="50" width="20" height="5" rx="2" fill="#7986cb" opacity=".5"/><rect x="56" y="50" width="20" height="5" rx="2" fill="#7986cb" opacity=".5"/><rect x="92" y="50" width="20" height="5" rx="2" fill="#7986cb" opacity=".5"/></g><text x="80" y="28" text-anchor="middle" font-size="18">🌾</text></svg>
+              <div style="position:absolute;bottom:6px;left:8px;font-size:9px;font-weight:700;color:#283593;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:10px">NABARD</div>
+            </div>
+          </div>
+
+          <!-- Scheme Cards Grid -->
+          <div class="scheme-grid" id="scheme-cards-container">
+
+            <!-- 1. PM-KISAN -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">PM-KISAN Samman Nidhi</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🌾</div>
+              </div>
+              <div class="scheme-desc">Direct income support of ₹6,000/year in 3 equal instalments of ₹2,000 each to all eligible farmer families with cultivable landholding.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div style="font-size:11px;color:var(--text2)">• Aadhaar Card (mandatory)</div>
+                  <div style="font-size:11px;color:var(--text2)">• Land ownership records / Khatoni</div>
+                  <div style="font-size:11px;color:var(--text2)">• Bank passbook (DBT-linked)</div>
+                  <div style="font-size:11px;color:var(--text2)">• Mobile number (Aadhaar-linked)</div>
+                </div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Landholding farmer family (any amount of land)</div>
+                <div style="font-size:11px;color:var(--text2)">• Not an income-tax payer</div>
+                <div style="font-size:11px;color:var(--text2)">• Not a retired govt employee / MP / MLA</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar must be seeded to bank account</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">₹6,000</div><div class="scheme-amount-lbl">/ year (3 instalments)</div></div>
+              <div class="scheme-cta" onclick="applyScheme('PM-KISAN Samman Nidhi','₹6,000/year')">Apply Now →</div>
+            </div>
+
+            <!-- 2. PMFBY -->
+            <div class="scheme-card eligible" data-cat="central eligible insurance">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Insurance</span>
+                  <div class="scheme-name" style="margin-top:6px">PM Fasal Bima Yojana (PMFBY)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🌧️</div>
+              </div>
+              <div class="scheme-desc">Comprehensive crop insurance against natural calamities, pests, and diseases at heavily subsidized premium (2% for Kharif, 1.5% for Rabi crops).</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land record / 7/12 Utara</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank account details</div>
+                <div style="font-size:11px;color:var(--text2)">• Crop sowing certificate (from Gram Panchayat)</div>
+                <div style="font-size:11px;color:var(--text2)">• KCC card (if availing through bank)</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• All farmers growing notified crops in notified areas</div>
+                <div style="font-size:11px;color:var(--text2)">• Loanee farmers: compulsory coverage</div>
+                <div style="font-size:11px;color:var(--text2)">• Non-loanee: voluntary enrollment before cut-off date</div>
+                <div style="font-size:11px;color:var(--text2)">• Must enroll before sowing season deadline</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">Up to ₹2L</div><div class="scheme-amount-lbl">coverage per season</div></div>
+              <div class="scheme-cta" onclick="checkEligibility('PM Fasal Bima Yojana')">Check Eligibility →</div>
+            </div>
+
+            <!-- 3. KCC -->
+            <div class="scheme-card check" data-cat="central loan">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag check">⚠ Check · Loan / Credit</span>
+                  <div class="scheme-name" style="margin-top:6px">Kisan Credit Card (KCC)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#fff3e0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">💳</div>
+              </div>
+              <div class="scheme-desc">Flexible revolving credit facility at 4% interest for crop production, post-harvest expenses, consumption needs and allied activities.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card + PAN Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land ownership / lease records</div>
+                <div style="font-size:11px;color:var(--text2)">• Passport-size photographs (2)</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank account passbook</div>
+                <div style="font-size:11px;color:var(--text2)">• Income / crop estimation certificate</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• All farmers — individual / joint cultivators</div>
+                <div style="font-size:11px;color:var(--text2)">• SHG members / tenant farmers / sharecroppers</div>
+                <div style="font-size:11px;color:var(--text2)">• No default on any previous agricultural loan</div>
+                <div style="font-size:11px;color:var(--text2)">• Credit limit linked to landholding & crop type</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:var(--orange)">₹1,60,000</div><div class="scheme-amount-lbl">credit limit · 4% p.a.</div></div>
+              <div class="scheme-cta" style="color:var(--orange)" onclick="showToast('🏦 Redirecting to KCC application at nearest bank...')">Check Bank →</div>
+            </div>
+
+            <!-- 4. Soil Health Card -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">Soil Health Card Scheme</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🌱</div>
+              </div>
+              <div class="scheme-desc">Free soil testing every 2 years. Receive a Soil Health Card with nutrient status and crop-wise fertilizer recommendations for better yield.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land record / survey number</div>
+                <div style="font-size:11px;color:var(--text2)">• Mobile number for SMS alerts</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Any farmer with cultivable land</div>
+                <div style="font-size:11px;color:var(--text2)">• Applicable to all states / UTs</div>
+                <div style="font-size:11px;color:var(--text2)">• Soil sample collected from your field</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">Free</div><div class="scheme-amount-lbl">every 2 years · 12 parameters tested</div></div>
+              <div class="scheme-cta" onclick="applyScheme('Soil Health Card Scheme','Free soil testing')">Register →</div>
+            </div>
+
+            <!-- 5. PMKSY -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">PM Krishi Sinchayee Yojana (PMKSY)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e3f2fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">💧</div>
+              </div>
+              <div class="scheme-desc">"Har Khet Ko Pani, More Crop Per Drop" — subsidy on drip/sprinkler irrigation systems to improve water use efficiency by up to 50%.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land ownership record (7/12)</div>
+                <div style="font-size:11px;color:var(--text2)">• Electricity connection proof</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank passbook</div>
+                <div style="font-size:11px;color:var(--text2)">• Quotation from registered vendor</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Small & marginal farmers: 55% subsidy</div>
+                <div style="font-size:11px;color:var(--text2)">• Other farmers: 45% subsidy</div>
+                <div style="font-size:11px;color:var(--text2)">• SC/ST farmers: additional 10% subsidy</div>
+                <div style="font-size:11px;color:var(--text2)">• Must install drip/sprinkler system</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:#1565c0">55%</div><div class="scheme-amount-lbl">subsidy on irrigation equipment</div></div>
+              <div class="scheme-cta" style="color:#1565c0" onclick="applyScheme('PM Krishi Sinchayee Yojana','55% subsidy on drip irrigation')">Apply Now →</div>
+            </div>
+
+            <!-- 6. NABARD -->
+            <div class="scheme-card check" data-cat="central loan">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag check">⚠ Check · Loan</span>
+                  <div class="scheme-name" style="margin-top:6px">NABARD Agricultural Loan</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#fff3e0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏦</div>
+              </div>
+              <div class="scheme-desc">Short-term and long-term agricultural finance through cooperative banks, RRBs. Includes interest subvention of 2-3% for timely repayment.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar + PAN Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land records / ownership proof</div>
+                <div style="font-size:11px;color:var(--text2)">• CIBIL / credit score report</div>
+                <div style="font-size:11px;color:var(--text2)">• Income certificate</div>
+                <div style="font-size:11px;color:var(--text2)">• Business / crop plan</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Individual farmers, FPOs, SHGs</div>
+                <div style="font-size:11px;color:var(--text2)">• No existing NPA classification</div>
+                <div style="font-size:11px;color:var(--text2)">• Valid land ownership or lease deed</div>
+                <div style="font-size:11px;color:var(--text2)">• Repayment capacity based on farm income</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:var(--orange)">₹1.5L – 10L</div><div class="scheme-amount-lbl">7% p.a. · up to 5 yr</div></div>
+              <div class="scheme-cta" style="color:var(--orange)" onclick="applyLoan('NABARD Agricultural Loan','₹1,50,000','7% p.a.','36 months')">Apply →</div>
+            </div>
+
+            <!-- 7. eNAM -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">e-NAM (National Agriculture Market)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📱</div>
+              </div>
+              <div class="scheme-desc">Online trading portal for agricultural commodities. Sell produce directly at best prices across 1,000+ APMC mandis. Eliminates middlemen.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank account linked to Aadhaar</div>
+                <div style="font-size:11px;color:var(--text2)">• Mobile number</div>
+                <div style="font-size:11px;color:var(--text2)">• APMC trader registration (optional)</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Any farmer with produce to sell</div>
+                <div style="font-size:11px;color:var(--text2)">• Crop must be a notified commodity</div>
+                <div style="font-size:11px;color:var(--text2)">• Must register on enam.gov.in</div>
+                <div style="font-size:11px;color:var(--text2)">• Nearest mandi must be e-NAM integrated</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">Free</div><div class="scheme-amount-lbl">registration · better price discovery</div></div>
+              <div class="scheme-cta" onclick="applyScheme('e-NAM Registration','Better market prices')">Register →</div>
+            </div>
+
+            <!-- 8. Paramparagat Krishi Vikas Yojana -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">Paramparagat Krishi Vikas Yojana (PKVY)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🌿</div>
+              </div>
+              <div class="scheme-desc">Financial support to convert to organic farming. Includes certification, training, and market linkage support for organic produce over 3 years.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land ownership documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank passbook</div>
+                <div style="font-size:11px;color:var(--text2)">• Cluster group certificate (20 farmers min)</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Minimum cluster of 20 farmers (50 acres)</div>
+                <div style="font-size:11px;color:var(--text2)">• Willing to adopt organic practices</div>
+                <div style="font-size:11px;color:var(--text2)">• No synthetic pesticide use during program</div>
+                <div style="font-size:11px;color:var(--text2)">• Participate in PGS certification process</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">₹50,000</div><div class="scheme-amount-lbl">per ha over 3 years</div></div>
+              <div class="scheme-cta" onclick="checkEligibility('PKVY Organic Farming')">Check Eligibility →</div>
+            </div>
+
+            <!-- 9. Maharashtra Shetkari -->
+            <div class="scheme-card info" data-cat="state">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag info">ℹ State Scheme · Maharashtra</span>
+                  <div class="scheme-name" style="margin-top:6px">Maharashtra Shetkari Sahajya Yojana</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e3f2fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏞️</div>
+              </div>
+              <div class="scheme-desc">State government drought relief: input subsidy on seeds & fertilizers, interest-free loans to farmers in drought-affected districts. District-wise eligibility applies.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• 7/12 Satbara Utara (land record)</div>
+                <div style="font-size:11px;color:var(--text2)">• Drought-affected district certificate</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank passbook (nationalized bank)</div>
+                <div style="font-size:11px;color:var(--text2)">• Panchayat / Tehsil recommendation</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Must be in notified drought-affected district</div>
+                <div style="font-size:11px;color:var(--text2)">• Annual income below ₹1,50,000</div>
+                <div style="font-size:11px;color:var(--text2)">• Land holding up to 5 hectares</div>
+                <div style="font-size:11px;color:var(--text2)">• Maharashtra domicile for 15+ years</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:#1565c0">₹50,000</div><div class="scheme-amount-lbl">max subsidy per farmer</div></div>
+              <div class="scheme-cta" style="color:#1565c0" onclick="checkEligibility('Maharashtra Shetkari Sahajya Yojana')">Check District Eligibility →</div>
+            </div>
+
+            <!-- 10. PM Kusum -->
+            <div class="scheme-card eligible" data-cat="central eligible">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag eligible">✓ Eligible · Central Govt</span>
+                  <div class="scheme-name" style="margin-top:6px">PM-KUSUM (Solar Pump Scheme)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#fffde7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">☀️</div>
+              </div>
+              <div class="scheme-desc">PM Kisan Urja Suraksha evam Uttham Mahabhiyan — solar-powered irrigation pumps with 60% central subsidy. Sell surplus power to DISCOMs.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land ownership records</div>
+                <div style="font-size:11px;color:var(--text2)">• Existing pump/borewell proof</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank passbook</div>
+                <div style="font-size:11px;color:var(--text2)">• State DISCOM registration</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Must own a borewell / water source</div>
+                <div style="font-size:11px;color:var(--text2)">• Diesel pump replacement preferred</div>
+                <div style="font-size:11px;color:var(--text2)">• 60% central + 30% state subsidy available</div>
+                <div style="font-size:11px;color:var(--text2)">• Farmer pays only 10% of cost</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount">90%</div><div class="scheme-amount-lbl">subsidy on solar pump installation</div></div>
+              <div class="scheme-cta" onclick="applyScheme('PM-KUSUM Solar Pump','90% subsidy on solar pump')">Apply Now →</div>
+            </div>
+
+            <!-- 11. Agri Infrastructure Fund -->
+            <div class="scheme-card check" data-cat="central loan">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag check">⚠ Check · Loan</span>
+                  <div class="scheme-name" style="margin-top:6px">Agriculture Infrastructure Fund (AIF)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#fff3e0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏗️</div>
+              </div>
+              <div class="scheme-desc">Medium-long term debt financing for post-harvest management: cold storage, silos, assaying units, sorting/grading, primary processing. 3% interest subvention.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar + PAN + GSTIN</div>
+                <div style="font-size:11px;color:var(--text2)">• Project report / DPR</div>
+                <div style="font-size:11px;color:var(--text2)">• Land ownership / lease</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank statements (last 6 months)</div>
+                <div style="font-size:11px;color:var(--text2)">• Registration: FPO / PACS / cooperative</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• FPOs, SHGs, cooperatives, Agri-startups</div>
+                <div style="font-size:11px;color:var(--text2)">• Individual farmers for cold chain infra</div>
+                <div style="font-size:11px;color:var(--text2)">• CGTMSE credit guarantee available</div>
+                <div style="font-size:11px;color:var(--text2)">• Loan up to ₹2 crore for individual farmers</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:var(--orange)">₹2 Cr</div><div class="scheme-amount-lbl">3% interest subvention</div></div>
+              <div class="scheme-cta" style="color:var(--orange)" onclick="checkEligibility('Agriculture Infrastructure Fund')">Check Eligibility →</div>
+            </div>
+
+            <!-- 12. Rashtriya Krishi Vikas Yojana -->
+            <div class="scheme-card info" data-cat="central state">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <div>
+                  <span class="scheme-tag info">ℹ Central / State · RKVY</span>
+                  <div class="scheme-name" style="margin-top:6px">Rashtriya Krishi Vikas Yojana (RKVY)</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:#e3f2fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📊</div>
+              </div>
+              <div class="scheme-desc">Holistic development of agriculture & allied sectors. Covers training, demonstration, FPO development, agri-entrepreneurship, and allied activities support.</div>
+              <div style="margin:8px 0;padding:8px 10px;background:#f1f8f1;border-radius:8px;border:1px solid #c8e6c9">
+                <div style="font-size:10px;font-weight:700;color:#2e7d32;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">📋 Required Documents</div>
+                <div style="font-size:11px;color:var(--text2)">• Aadhaar Card</div>
+                <div style="font-size:11px;color:var(--text2)">• Land / activity proof</div>
+                <div style="font-size:11px;color:var(--text2)">• Bank account details</div>
+                <div style="font-size:11px;color:var(--text2)">• State agriculture dept. referral</div>
+              </div>
+              <div style="margin-bottom:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;border:1px solid #ffe0b2">
+                <div style="font-size:10px;font-weight:700;color:#e65100;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em">✅ Eligibility Conditions</div>
+                <div style="font-size:11px;color:var(--text2)">• Applied through State Agriculture Dept.</div>
+                <div style="font-size:11px;color:var(--text2)">• FPOs, farmer groups preferred</div>
+                <div style="font-size:11px;color:var(--text2)">• Project must align with state annual plan</div>
+                <div style="font-size:11px;color:var(--text2)">• Activity must be in approved component list</div>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:8px"><div class="scheme-amount" style="color:#1565c0">Varies</div><div class="scheme-amount-lbl">project-based grant / subsidy</div></div>
+              <div class="scheme-cta" style="color:#1565c0" onclick="checkEligibility('RKVY')">Contact Agri Dept →</div>
+            </div>
+
+          </div><!-- end scheme-grid -->
+
+          <!-- Info footer -->
+          <div style="margin-top:16px;padding:12px 16px;background:linear-gradient(135deg,#e8f5e9,#f1f8f1);border-radius:10px;border:1px solid #c8e6c9;display:flex;align-items:center;gap:12px">
+            <div style="font-size:22px">🔒</div>
+            <div style="font-size:12px;color:var(--text2);flex:1">
+              <strong style="color:var(--green)">QuantumGuard Advantage:</strong> Your verified blockchain identity & IPFS documents auto-fill all scheme applications. No manual document submission needed at government offices.
+            </div>
+            <button class="btn btn-primary" style="padding:7px 14px;font-size:12px;background:linear-gradient(135deg,#4CAF50,#2e7d32);flex-shrink:0" onclick="showToast('📋 Opening bulk application wizard...')">Apply to All Eligible →</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PAGE: PROFILE ── -->
+      <div id="dash-profile" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">👨‍🌾 Farmer Profile</div>
+            <div class="f-page-sub">Manage your personal information</div>
+          </div>
+          <div class="f-topbar-right">
+            <button class="btn btn-outline" style="padding:6px 14px;font-size:12px" onclick="editProfile()">✏️ Edit Profile</button>
+          </div>
+        </div>
+        <div class="f-content">
+
+          <!-- Profile Header Banner -->
+          <div class="profile-header">
+            <div id="dp-avatar-lg" class="profile-avatar-lg">?</div>
+            <div>
+              <div id="dp-name" class="profile-name">—</div>
+              <div class="profile-id">Farmer ID: <span id="dp-id">Not registered</span></div>
+              <div id="dp-verify-badge" class="profile-verify" style="display:none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+                Identity Verified on Blockchain
+              </div>
+              <div id="dp-pending-badge" class="profile-verify" style="display:none;background:rgba(255,167,38,.25);border-color:rgba(255,167,38,.4)">
+                ⏳ Registration Pending
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+            <!-- Personal Information -->
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Personal Information
+              </div>
+              <div class="profile-grid" style="grid-template-columns:1fr 1fr;gap:8px">
+                <div class="profile-field"><div class="profile-field-label">Full Name</div><div id="dp-fullname" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Date of Birth</div><div id="dp-dob" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Phone</div><div id="dp-phone" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Aadhaar</div><div id="dp-aadhaar" class="profile-field-val" style="font-family:monospace">—</div></div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Address
+              </div>
+              <div class="profile-grid" style="grid-template-columns:1fr 1fr;gap:8px">
+                <div class="profile-field" style="grid-column:1/-1"><div class="profile-field-label">Full Address</div><div id="dp-address" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Village</div><div id="dp-village" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">District</div><div id="dp-district" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Taluka</div><div id="dp-taluka" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">State</div><div id="dp-state" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">PIN Code</div><div id="dp-pincode" class="profile-field-val">—</div></div>
+              </div>
+            </div>
+
+            <!-- Land Details -->
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Land Details
+              </div>
+              <div class="profile-grid" style="grid-template-columns:1fr 1fr;gap:8px">
+                <div class="profile-field"><div class="profile-field-label">Land Area</div><div id="dp-land" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Survey No.</div><div id="dp-surveyno" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Crop Type</div><div id="dp-crop" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Irrigation</div><div id="dp-irrigation" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Soil Type</div><div id="dp-soiltype" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Ownership</div><div id="dp-ownership" class="profile-field-val">—</div></div>
+              </div>
+            </div>
+
+            <!-- Financial Details -->
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Financial Details
+              </div>
+              <div class="profile-grid" style="grid-template-columns:1fr 1fr;gap:8px">
+                <div class="profile-field"><div class="profile-field-label">Monthly Income</div><div id="dp-income" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Annual Income</div><div id="dp-annual" class="profile-field-val">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">Bank Account</div><div id="dp-bank" class="profile-field-val" style="font-family:monospace">—</div></div>
+                <div class="profile-field"><div class="profile-field-label">IFSC Code</div><div id="dp-ifsc" class="profile-field-val" style="font-family:monospace">—</div></div>
+                <div class="profile-field" style="grid-column:1/-1"><div class="profile-field-label">Loan History</div><div id="dp-loanhistory" class="profile-field-val">—</div></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Registration Status Banner -->
+          <div id="dp-reg-banner" style="margin-top:14px;padding:12px 16px;border-radius:10px;border:1px solid #c8e6c9;background:var(--green-xpale);font-size:12px;color:var(--text2);display:none">
+            ✅ <strong style="color:var(--green)">Registered!</strong> Your identity is stored on Ethereum Sepolia blockchain. Farmer ID: <strong id="dp-reg-id" style="font-family:monospace;color:var(--green)">—</strong>
+          </div>
+          <div id="dp-unreg-banner" style="margin-top:14px;padding:12px 16px;border-radius:10px;border:1px solid #ffe0b2;background:#fff3e0;font-size:12px;color:#e65100">
+            ⚠️ <strong>Not yet registered.</strong> Complete the registration process to get your blockchain identity and access government schemes.
+            <button onclick="showScreen('screen-register')" style="margin-left:10px;padding:4px 12px;border-radius:6px;border:1.5px solid #e65100;background:transparent;color:#e65100;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body)">Register Now →</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PAGE: DOCUMENTS ── -->
+      <div id="dash-documents" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">📄 Document Submission</div>
+            <div class="f-page-sub">6 required documents for identity verification</div>
+          </div>
+          <div class="f-topbar-right">
+            <div id="doc-overall-badge" style="font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;background:#fff3e0;color:#e65100;border:1px solid #ffe0b2">0 / 6 Uploaded</div>
+          </div>
+        </div>
+        <div class="f-content">
+
+          <!-- Progress bar -->
+          <div class="f-card" style="margin-bottom:16px;padding:14px 16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:13px;font-weight:700;color:var(--text1)">📋 Submission Progress</div>
+              <div id="doc-progress-label" style="font-size:12px;color:var(--text2)">0 of 6 documents uploaded</div>
+            </div>
+            <div style="height:8px;background:#e0e0e0;border-radius:10px;overflow:hidden">
+              <div id="doc-progress-bar" style="height:100%;background:linear-gradient(90deg,#4CAF50,#81c784);border-radius:10px;transition:width .4s ease;width:0%"></div>
+            </div>
+            <div style="margin-top:8px;font-size:11px;color:var(--text2)">⚠️ All 6 documents are <strong style="color:#e65100">mandatory</strong> to complete your blockchain identity verification and access government schemes.</div>
+          </div>
+
+          <!-- Required Documents Grid -->
+          <div id="req-docs-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
+            <!-- Populated by renderDocumentsPage() -->
+          </div>
+
+          <!-- IPFS info -->
+          <div style="padding:12px 14px;background:var(--green-xpale);border-radius:10px;border:1px solid #c8e6c9;font-size:12px;color:var(--text2)">
+            🔗 All documents are stored on <strong style="color:var(--green)">IPFS via Pinata</strong>. CIDs are permanent and tamper-proof. Your admin can verify any document using the CID on any IPFS gateway.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: BLOCKCHAIN ── -->
+      <div id="dash-blockchain" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">⛓️ Blockchain Details</div>
+            <div class="f-page-sub">Ethereum Sepolia Testnet — Immutable record</div>
+          </div>
+          <div class="f-topbar-right">
+            <button class="btn btn-outline" style="padding:7px 14px;font-size:12px" onclick="window.open('https://sepolia.etherscan.io','_blank')">🔗 View on Etherscan</button>
+          </div>
+        </div>
+        <div class="f-content">
+          <div class="chain-card">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+              <div style="width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#90caf9" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <div style="color:white;font-weight:700;font-size:14px;font-family:var(--font-head)" id="chain-banner-name">—</div>
+                <div style="color:rgba(255,255,255,.5);font-size:11px">Farmer ID: <span id="chain-banner-id">Not registered</span> · Sepolia Testnet</div>
+              </div>
+              <div style="margin-left:auto;background:rgba(76,175,80,.3);color:#a5d6a7;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">✓ Confirmed</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr;gap:12px">
+              <div>
+                <div class="chain-label">Farmer Identity Hash (SHA-256)</div>
+                <div class="chain-hash" id="chain-identity-hash">a3f2c8e1b4d97563f0e2a81c5b3d749e2f6a0c8d1e4b7a3f2c8e1b4d97563f0</div>
+              </div>
+              <div>
+                <div class="chain-label">IPFS CID (Primary Document)</div>
+                <div class="chain-hash">QmX4r7NykygHhBrVo4kFSJGi8BwGMi7YSGqf9aB3fG2Pq5sT8vKmNrX</div>
+              </div>
+              <div>
+                <div class="chain-label">Transaction Hash</div>
+                <div class="chain-hash" id="chain-tx-hash">0x7f3a2e1d9c8b5a4f2e6d0c3b1a8e5f2d9c6b3a0e7f4d1c8b5a2e9f6d3c0b7a4</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Transaction Info
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Block Number</span>
+                  <span style="font-weight:700;font-family:monospace">#7,234,891</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Registered On</span>
+                  <span id="chain-timestamp" style="font-weight:600">—</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Gas Used</span>
+                  <span style="font-weight:600;font-family:monospace">62,341 gwei</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0">
+                  <span style="color:var(--text2)">Status</span>
+                  <span class="badge badge-approved">✓ Success</span>
+                </div>
+              </div>
+            </div>
+            <div class="f-card">
+              <div class="f-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Smart Contract
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Contract</span>
+                  <span style="font-weight:600;font-family:monospace;font-size:10px;color:#1565c0">0x4a3B...8f2E</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Network</span>
+                  <span style="font-weight:600">Sepolia Testnet</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span style="color:var(--text2)">Verification</span>
+                  <span class="badge badge-approved">Verified</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;padding:8px 0">
+                  <span style="color:var(--text2)">Registered Farmer</span>
+                  <span id="chain-farmer-name" style="font-weight:600">—</span>
+                </div>
+              </div>
+              <button class="btn btn-outline" style="width:100%;margin-top:12px;font-size:12px;padding:8px" onclick="window.open('https://sepolia.etherscan.io','_blank')">🔗 View on Etherscan →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: LOAN ── -->
+      <div id="dash-loan" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">💰 Loan Eligibility</div>
+            <div class="f-page-sub">Based on your land, income & documents</div>
+          </div>
+          <div class="f-topbar-right">
+            <button class="btn btn-primary" style="padding:7px 14px;font-size:12px;background:linear-gradient(135deg,#4CAF50,#2e7d32)" onclick="applyLoan('PM Kisan Loan','₹1,50,000','4% p.a.','36 months')">Apply for Loan</button>
+          </div>
+        </div>
+        <div class="f-content">
+          <div class="loan-result approved">
+            <div class="loan-result-icon approved">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text2);margin-bottom:2px;font-weight:600;text-transform:uppercase;letter-spacing:.04em">Loan Eligibility Status</div>
+              <div style="color:#2e7d32;font-size:18px;font-weight:800;font-family:var(--font-head)">✅ APPROVED</div>
+              <div class="loan-label" style="margin-top:4px">Suggested Loan Amount</div>
+              <div class="loan-amount">₹1,50,000</div>
+              <div style="font-size:11px;color:var(--text2);margin-top:4px">At 4% interest · Repayment: 36 months · Under PM Kisan Yojana</div>
+            </div>
+          </div>
+
+          <div class="f-card" style="margin-bottom:14px">
+            <div class="f-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Eligibility Criteria Check
+            </div>
+            <div class="criteria-list">
+              <div class="criteria-row">
+                <div class="criteria-label">🌾 Land Area &gt; 1 Acre</div>
+                <div id="lc-land" class="criteria-val pass">3.5 ac ✓</div>
+              </div>
+              <div class="criteria-row">
+                <div class="criteria-label">💵 Monthly Income &lt; ₹25,000</div>
+                <div id="lc-income" class="criteria-val pass">₹18,000 ✓</div>
+              </div>
+              <div class="criteria-row">
+                <div class="criteria-label">📄 Land Record Uploaded</div>
+                <div class="criteria-val pass">Verified ✓</div>
+              </div>
+              <div class="criteria-row">
+                <div class="criteria-label">🆔 Blockchain Identity Verified</div>
+                <div class="criteria-val pass">Confirmed ✓</div>
+              </div>
+              <div class="criteria-row">
+                <div class="criteria-label">🏦 Active Bank Account Linked</div>
+                <div class="criteria-val pass">SBI ✓</div>
+              </div>
+              <div class="criteria-row">
+                <div class="criteria-label">⚠️ Existing Loan Default</div>
+                <div class="criteria-val pass">None ✓</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="f-card">
+            <div class="f-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Available Loan Products
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--green-xpale);border-radius:8px;border:1px solid #c8e6c9">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:var(--green)">Kisan Credit Card (KCC)</div>
+                  <div style="font-size:11px;color:var(--text2)">₹1,60,000 · 4% p.a. · 12 months</div>
+                </div>
+                <button class="btn btn-primary" style="padding:6px 14px;font-size:11px;background:linear-gradient(135deg,#4CAF50,#2e7d32)" onclick="applyLoan('Kisan Credit Card','₹1,60,000','4% p.a.','12 months')">Apply</button>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--orange-pale);border-radius:8px;border:1px solid #ffe0b2">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#e65100">NABARD Short-term Loan</div>
+                  <div style="font-size:11px;color:var(--text2)">₹1,50,000 · 7% p.a. · 36 months</div>
+                </div>
+                <button class="btn btn-orange" style="padding:6px 14px;font-size:11px" onclick="applyLoan('NABARD Short-term Loan','₹1,50,000','7% p.a.','36 months')">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: QR ── -->
+      <div id="dash-qr" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">📱 QR Identity Card</div>
+            <div class="f-page-sub">Your blockchain-verified digital identity</div>
+          </div>
+        </div>
+        <div class="f-content">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start">
+            <div class="qr-card-wrap" style="max-width:300px">
+              <div class="qr-header">
+                <div class="qr-header-logo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="qr-header-name">QuantumGuard</div>
+              </div>
+              <div id="qr-farmer-name" style="font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--text1)">—</div>
+              <div id="qr-farmer-id" style="font-size:11px;color:var(--text2);font-family:monospace">Not registered</div>
+              <div id="qr-canvas" style="width:180px;height:180px;display:flex;align-items:center;justify-content:center;border:1px solid #eee;border-radius:8px;background:#f9f9f9">
+                <!-- QR placeholder pattern -->
+                <svg width="160" height="160" viewBox="0 0 160 160">
+                  <rect width="160" height="160" fill="white"/>
+                  <!-- QR pattern approximation -->
+                  <rect x="10" y="10" width="50" height="50" rx="4" fill="none" stroke="#222" stroke-width="5"/>
+                  <rect x="20" y="20" width="30" height="30" rx="2" fill="#222"/>
+                  <rect x="100" y="10" width="50" height="50" rx="4" fill="none" stroke="#222" stroke-width="5"/>
+                  <rect x="110" y="20" width="30" height="30" rx="2" fill="#222"/>
+                  <rect x="10" y="100" width="50" height="50" rx="4" fill="none" stroke="#222" stroke-width="5"/>
+                  <rect x="20" y="110" width="30" height="30" rx="2" fill="#222"/>
+                  <!-- Data dots -->
+                  <g fill="#222">
+                    <rect x="75" y="10" width="8" height="8"/>
+                    <rect x="65" y="20" width="8" height="8"/>
+                    <rect x="75" y="30" width="8" height="8"/>
+                    <rect x="85" y="20" width="8" height="8"/>
+                    <rect x="65" y="40" width="8" height="8"/>
+                    <rect x="85" y="40" width="8" height="8"/>
+                    <rect x="10" y="65" width="8" height="8"/>
+                    <rect x="20" y="75" width="8" height="8"/>
+                    <rect x="30" y="65" width="8" height="8"/>
+                    <rect x="40" y="75" width="8" height="8"/>
+                    <rect x="50" y="65" width="8" height="8"/>
+                    <rect x="65" y="65" width="8" height="8"/>
+                    <rect x="75" y="75" width="8" height="8"/>
+                    <rect x="85" y="65" width="8" height="8"/>
+                    <rect x="95" y="75" width="8" height="8"/>
+                    <rect x="105" y="65" width="8" height="8"/>
+                    <rect x="115" y="75" width="8" height="8"/>
+                    <rect x="125" y="65" width="8" height="8"/>
+                    <rect x="135" y="75" width="8" height="8"/>
+                    <rect x="145" y="65" width="8" height="8"/>
+                    <rect x="65" y="85" width="8" height="8"/>
+                    <rect x="75" y="95" width="8" height="8"/>
+                    <rect x="85" y="85" width="8" height="8"/>
+                    <rect x="95" y="95" width="8" height="8"/>
+                    <rect x="105" y="85" width="8" height="8"/>
+                    <rect x="115" y="95" width="8" height="8"/>
+                    <rect x="125" y="105" width="8" height="8"/>
+                    <rect x="135" y="115" width="8" height="8"/>
+                    <rect x="145" y="105" width="8" height="8"/>
+                    <rect x="65" y="105" width="8" height="8"/>
+                    <rect x="75" y="115" width="8" height="8"/>
+                    <rect x="85" y="105" width="8" height="8"/>
+                    <rect x="95" y="115" width="8" height="8"/>
+                    <rect x="105" y="125" width="8" height="8"/>
+                    <rect x="65" y="125" width="8" height="8"/>
+                    <rect x="75" y="135" width="8" height="8"/>
+                    <rect x="85" y="145" width="8" height="8"/>
+                    <rect x="95" y="135" width="8" height="8"/>
+                    <rect x="105" y="145" width="8" height="8"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="qr-info">
+                <div>
+                  <div class="qr-info-row">Farmer ID</div>
+                  <div class="qr-info-val" id="qr-info-id">—</div>
+                </div>
+                <div>
+                  <div class="qr-info-row">Status</div>
+                  <div class="qr-info-val" id="qr-info-status" style="color:var(--text2)">⏳ Pending</div>
+                </div>
+                <div>
+                  <div class="qr-info-row">Loan</div>
+                  <div class="qr-info-val" id="qr-info-loan" style="color:var(--text2)">Check Eligibility</div>
+                </div>
+                <div>
+                  <div class="qr-info-row">Network</div>
+                  <div class="qr-info-val">Sepolia</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div class="f-card">
+                <div class="f-card-title">🔐 Identity Data Encoded in QR</div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div id="qr-encoded-data" style="font-size:11px;color:var(--text2);padding:8px 10px;background:var(--green-xpale);border-radius:7px;font-family:monospace;word-break:break-all">
+                    <span style="color:var(--green);font-weight:700">ID:</span> <span id="qed-id">—</span><br>
+                    <span style="color:var(--green);font-weight:700">NAME:</span> <span id="qed-name">—</span><br>
+                    <span style="color:var(--green);font-weight:700">STATUS:</span> <span id="qed-status">Pending</span><br>
+                    <span style="color:var(--green);font-weight:700">LAND:</span> <span id="qed-land">—</span><br>
+                    <span style="color:var(--green);font-weight:700">CROP:</span> <span id="qed-crop">—</span><br>
+                    <span style="color:var(--green);font-weight:700">INCOME:</span> <span id="qed-income">—</span><br>
+                    <span style="color:var(--green);font-weight:700">VILLAGE:</span> <span id="qed-village">—</span><br>
+                    <span style="color:var(--green);font-weight:700">DOCS:</span> <span id="qed-docs">0</span> uploaded
+                  </div>
+                </div>
+              </div>
+
+              <div class="f-card">
+                <div class="f-card-title">📲 Share & Download</div>
+                <div class="qr-actions" style="justify-content:flex-start">
+                  <button class="qr-action-btn download" onclick="showToast('📥 QR Code downloaded as PNG')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download QR
+                  </button>
+                  <button class="qr-action-btn share" onclick="showToast('🔗 Share link copied to clipboard')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Share QR
+                  </button>
+                  <button class="qr-action-btn print" onclick="showToast('🖨️ Print dialog opened')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print ID Card
+                  </button>
+                </div>
+              </div>
+
+              <div class="f-card">
+                <div class="f-card-title">🪪 Digital ID Card Preview</div>
+                <!-- Mini ID Card -->
+                <div style="background:linear-gradient(135deg,#1b5e20,#4CAF50);border-radius:10px;padding:16px;color:white;display:flex;align-items:center;gap:14px;max-width:340px">
+                  <div id="idcard-avatar" style="width:48px;height:48px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;border:2px solid rgba(255,255,255,.3);flex-shrink:0">?</div>
+                  <div style="flex:1">
+                    <div id="idcard-name" style="font-family:var(--font-head);font-size:15px;font-weight:700">—</div>
+                    <div id="idcard-id" style="font-size:10px;opacity:.7;font-family:monospace">Not registered</div>
+                    <div style="margin-top:5px;display:flex;gap:6px;flex-wrap:wrap">
+                      <span id="idcard-verify-badge" style="background:rgba(255,255,255,.2);padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600">⏳ Pending</span>
+                      <span id="idcard-loan-badge" style="background:rgba(255,167,38,.3);padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600">💰 Loan Eligible</span>
+                    </div>
+                    <div id="idcard-location" style="font-size:9px;opacity:.55;margin-top:4px;font-family:monospace">Complete registration to activate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAGE: STATUS ── -->
+      <div id="dash-status" class="f-page">
+        <div class="f-topbar">
+          <div>
+            <div class="f-page-title">📊 Validation Status</div>
+            <div class="f-page-sub">Real-time identity verification progress</div>
+          </div>
+          <div class="f-topbar-right">
+            <button class="btn btn-outline" style="padding:7px 14px;font-size:12px" onclick="updateValidationStatusPage();showToast('🔄 Status refreshed')">🔄 Refresh</button>
+          </div>
+        </div>
+        <div class="f-content">
+          <!-- Progress summary -->
+          <div class="f-card" style="margin-bottom:14px">
+            <div class="f-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Overall Verification Progress
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="font-size:13px;color:var(--text2)" id="vs-progress-label">Loading...</div>
+              <div style="font-size:18px;font-weight:800;color:var(--green);font-family:var(--font-head)" id="vs-progress-pct">0%</div>
+            </div>
+            <div style="height:10px;background:#e0e0e0;border-radius:10px;overflow:hidden">
+              <div id="vs-progress-bar" style="height:100%;background:linear-gradient(90deg,#4CAF50,#81c784);border-radius:10px;transition:width .5s ease;width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Individual validation steps -->
+          <div class="f-card">
+            <div class="f-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Verification Checklist
+            </div>
+            <div id="vs-steps-container" style="display:flex;flex-direction:column;gap:8px">
+              <!-- Dynamically populated by updateValidationStatusPage() -->
+              <div style="text-align:center;padding:20px;color:var(--text2);font-size:13px">Loading status...</div>
+            </div>
+          </div>
+
+          <!-- Info box -->
+          <div style="margin-top:14px;padding:12px 14px;background:var(--green-xpale);border-radius:10px;border:1px solid #c8e6c9;font-size:12px;color:var(--text2)">
+            ℹ️ Your validation status updates automatically as you complete each section. Complete all steps to get your <strong style="color:var(--green)">Blockchain Identity Certificate</strong> and access all government schemes.
+          </div>
+        </div>
+      </div>
+
+      </div><!-- end f-main -->
+  </div><!-- end dash-wrap -->
+</div><!-- end dashboard screen -->
+
+<!-- Toast -->
+<div class="f-toast" id="f-toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="f-toast-msg"></span>
+</div>
+
+
+<script src="js/app.js"></script>
+</body>
+</html>
