@@ -1,5 +1,39 @@
 # QuantumGuard Backend — Setup Guide
 
+## Tech Stack
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework for API endpoints
+- **MongoDB** - NoSQL database for data storage
+- **Mongoose** - ODM for MongoDB
+
+### Blockchain
+- **Ethereum** - Blockchain platform
+- **Solidity** - Smart contract programming language
+- **Hardhat** - Development environment for Ethereum
+- **Ethers.js** - Library for interacting with Ethereum
+
+### Authentication & Security
+- **JWT (JSON Web Tokens)** - Token-based authentication
+- **bcrypt** - Password hashing
+- **crypto-js** - AES encryption for sensitive data
+
+### File Storage
+- **IPFS (via Pinata)** - Decentralized file storage
+- **Multer** - Middleware for handling file uploads
+
+### Other Libraries
+- **Axios** - HTTP client for API requests
+- **CORS** - Cross-origin resource sharing
+- **Dotenv** - Environment variable management
+- **Nodemon** - Development tool for auto-restarting server
+
+### Frontend (Dashboard)
+- **HTML5** - Markup language
+- **CSS3** - Styling
+- **JavaScript** - Client-side scripting
+
 ## Folder Structure
 ```
 quantumguard-backend/
